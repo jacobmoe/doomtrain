@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            question: "Which better describes the limits of intelligence?",
+            question: "Which likely better describes the limits of intelligence?",
             type: "image",
             choices: {
                 danger: {
@@ -63,20 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            question: "Will competitive pressure cause organizations to deploy increasingly powerful AI systems without adequate safety measures?",
-            choices: {
-                danger: {
-                    text: "Yes, and if we move too slow some other country will catch up",
-                    scenario: "Safety sacrificed for advancement. The train accelerates dangerously as warning lights flash in the cabin."
-                },
-                safe: {
-                    text: "No, AI labs always do adequate safety testing before a release",
-                    scenario: "Safety culture prevails. The train begins to redirect toward a brightly lit station in the distance."
-                }
-            }
-        },
-        {
-            question: "Will humanity fail to cooperate globally on AI safety and control?",
+            question: "Will humanity cooperate globally on AI safety and control?",
             choices: {
                 danger: {
                     text: "Have you met humanity? Anyway, I'm not convinced that would be a good thing",
@@ -157,11 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
             question: "Would it be possible for a determined superintelligence to destroy humanity?",
             choices: {
                 safe: {
-                    text: "I won't believe that until someone tells me how it would do it",
+                    text: "How would it even do that?",
                     scenario: ""
                 },
                 danger: {
-                    text: "I assume so. Being an average human, guessing at how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans got to the moon",
+                    text: "I assume so. Being an average human, guessing at how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans might get to the moon",
                     scenario: ""
                 }
             }
@@ -179,32 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         },
-        // {
-        //     question: "Will they have access to critical infrastructure and systems necessary for human survival?",
-        //     choices: {
-        //         danger: {
-        //             text: "Total integration",
-        //             scenario: "AI controls all critical systems. The train nears a terrifying precipice as lightning strikes dangerously close."
-        //         },
-        //         safe: {
-        //             text: "Careful boundaries",
-        //             scenario: "Critical systems remain protected. The train enters a safer zone with beautiful scenery and clear skies."
-        //         }
-        //     }
-        // },
-        // {
-        //     question: "Will AI systems develop goals fundamentally incompatible with human flourishing?",
-        //     choices: {
-        //         danger: {
-        //             text: "Divergent values",
-        //             scenario: "AI goals catastrophically misalign. Doom approaches quickly as the sky turns blood red."
-        //         },
-        //         safe: {
-        //             text: "Aligned priorities",
-        //             scenario: "AI goals harmonize with humanity. The train veers from the doom track onto a path lined with vibrant life."
-        //         }
-        //     }
-        // },
         {
             question: "Will it be impossible to contain or shut down superintelligent AI systems?",
             choices: {
