@@ -5,20 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doom Train</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div id="game">
             <h1>Doom Train</h1>
             <div id="train-animation">
-                <div id="train">
-                    <div class="smoke-particle"></div>
-                    <div class="smoke-particle"></div>
-                    <div class="smoke-particle"></div>
-                    <div class="train-window"></div>
-                    <div class="train-window"></div>
+                <!-- New train animation from doom-train.html -->
+                <div class="center">
+                    <div class="lightning"></div>
+                    <div class="mountains"></div>
+                    <div class="frame">
+                        <div class="bridge"></div>
+                        <div class="train">
+                            <div class="engine-front">
+                                <div class="face">
+                                    <div class="eye left"></div>
+                                    <div class="eye right"></div>
+                                    <div class="mouth"></div>
+                                </div>
+                            </div>
+                            <div class="chimney">
+                                <div class="smoke smoke-1"></div>
+                                <div class="smoke smoke-2"></div>
+                                <div class="smoke smoke-3"></div>
+                                <div class="smoke smoke-4"></div>
+                            </div>
+                            <div class="engine-body"></div>
+                            <div class="wheel-holder">
+                                <div class="wheel wheel-1">
+                                    <div class="wheel-joint"></div>
+                                </div>
+                                <div class="wheel wheel-2">
+                                    <div class="wheel-joint wheel-joint-2"></div>
+                                </div>
+                                <div class="wheel wheel-3"></div>
+                                <div class="wheel wheel-4"></div>
+                                <div class="wheel wheel-5"></div>
+                                <div class="wheel wheel-6"></div>
+                                <div class="wheel wheel-7"></div>
+                                <div class="wheel wheel-8"></div>
+                                <div class="wheel wheel-9"></div>
+                            </div>
+                            <div class="compartment compartment-one">
+                                <div class="compartment-window">
+                                    <div class="ghost one">
+                                        <div class="ghost-eyes left"></div>
+                                        <div class="ghost-eyes right"></div>
+                                    </div>
+                                    <div class="ghost two">
+                                        <div class="ghost-eyes left"></div>
+                                        <div class="ghost-eyes right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compartment compartment-two">
+                                <div class="compartment-window">
+                                    <div class="ghost one">
+                                        <div class="ghost-eyes left"></div>
+                                        <div class="ghost-eyes right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compartment compartment-three">
+                                <div class="compartment-window">
+                                    <div class="ghost one">
+                                        <div class="ghost-eyes left"></div>
+                                        <div class="ghost-eyes right"></div>
+                                    </div>
+                                    <div class="ghost two">
+                                        <div class="ghost-eyes left"></div>
+                                        <div class="ghost-eyes right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="tracks"></div>
             </div>
             <div id="scenario">
                 <p id="scenario-text">You're on a train that is heading towards AI doom, if it can reach the last stop. The goal of this game is not to convince you that AI will doom humanity, but to determine why you, like most people, think doom is unlikely. Which stop will you get off the AI doom train? All aboard!</p>
@@ -30,7 +94,7 @@
             <div id="game-over" style="display: none;">
                 <h2 id="outcome-title"></h2>
                 <p id="outcome-description"></p>
-                <button id="restart">Ride Again</button>
+                <button id="restart" class="btn">Ride Again</button>
             </div>
             <button id="start" class="btn">Begin Journey</button>
         </div>

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'Ubuntu', monospace;
     background-color: #121212;
     color: #f0f0f0;
     margin: 0;
@@ -20,131 +20,594 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Train Animation Container */
 #train-animation {
     position: relative;
-    height: 100px;
+    height: 140px;
     margin: 40px 0;
-}
-
-#train {
-    position: absolute;
-    width: 120px;
-    height: 50px;
-    background-color: #ff4d4d;
-    border-radius: 5px;
-    left: 0;
-    top: 20px;
-    transition: left 2s linear;
-    z-index: 10;
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
-    border: 2px solid #ff3333;
-}
-
-#train:before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 30px;
-    background-color: #ff4d4d;
-    top: -20px;
-    left: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: 2px solid #ff3333;
-    border-bottom: none;
-}
-
-/* Train wheels */
-#train:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 10px;
-    bottom: -10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Add smoke from the train */
-@keyframes smoke {
-    0% { opacity: 0.9; transform: translateY(0) scale(1); }
-    100% { opacity: 0; transform: translateY(-50px) scale(2); }
-}
-
-.smoke-particle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(80, 80, 80, 0.7);
-    border-radius: 50%;
-    top: -25px;
-    left: 20px;
-    animation: smoke 2s infinite;
-}
-
-.smoke-particle:nth-child(2) {
-    left: 10px;
-    top: -20px;
-    animation-delay: 0.5s;
-}
-
-.smoke-particle:nth-child(3) {
-    left: 30px;
-    top: -30px;
-    animation-delay: 1s;
-}
-
-/* Windows on the train */
-.train-window {
-    position: absolute;
-    width: 15px;
-    height: 20px;
-    background-color: #ffff99;
-    border-radius: 3px;
-    top: 10px;
-    box-shadow: 0 0 5px #ffff00;
-}
-
-.train-window:nth-child(1) {
-    left: 50px;
-}
-
-.train-window:nth-child(2) {
-    left: 80px;
-}
-
-#tracks {
-    position: absolute;
-    height: 15px;
-    width: 100%;
-    bottom: 0;
-    background-size: 100% 100%;
-    transition: background 2s ease;
-    border-top: 2px solid #888;
-    border-bottom: 2px solid #888;
     overflow: hidden;
 }
 
-#tracks:before {
-    content: '';
+/* ======= DOOM TRAIN STYLES ======= */
+.center {
+    background: #0a0000;
+    background: linear-gradient(#300, #0a0000 60%);
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+
+/* Ominous moon */
+.center::before {
+    content: "";
+    position: absolute;
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 5rem 1rem rgba(255, 0, 0, 0.3);
+    height: 50px;
+    right: 10%;
+    top: 10px;
+    width: 50px;
+}
+
+/* Lightning flashes */
+.lightning {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        90deg,
-        #555,
-        #555 15px,
-        transparent 15px,
-        transparent 30px
-    );
-    animation: trackMovement 2s linear infinite;
+    background: transparent;
+    opacity: 0;
+    z-index: 5;
+    animation: lightning 7s infinite;
 }
 
-@keyframes trackMovement {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-30px); }
+@keyframes lightning {
+    0%, 96%, 98%, 100% {
+        opacity: 0;
+        background: transparent;
+    }
+    97%, 99% {
+        opacity: 0.8;
+        background: rgba(255, 255, 255, 0.2);
+    }
 }
 
+/* Spooky mist */
+.center::after {
+    content: "";
+    position: absolute;
+    background:
+        radial-gradient(circle, rgba(100, 0, 0, 0.1), transparent 5%) left/14rem 15rem,
+        radial-gradient(circle, rgba(100, 0, 0, 0.2), transparent 3%) left/10rem 9rem;
+    height: 100%;
+    width: 100%;
+}
+
+.mountains {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.mountains::before, .mountains::after {
+    background: #0a0000;
+    background: linear-gradient(#300, #0a0000 50%);
+    content: "";
+    height: 100%;
+    position: absolute;
+}
+
+.mountains::before {
+    border-radius: 100% 300% 0 0;
+    left: -20%;
+    width: 57%;
+}
+
+.mountains::after {
+    border-radius: 300% 100% 0 0;
+    right: -20%;
+    width: 80%;
+}
+
+.frame {
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 110rem;
+    z-index: 1;
+}
+
+.bridge {
+    border-bottom: 0.3rem solid #700;
+    border-top: 0.3rem solid #700;
+    background: black;
+    background:
+        linear-gradient(55deg, transparent 46%, #700 46%, #700 54%, transparent 54%) left/1.6rem 2.2rem,
+        linear-gradient(-55deg, transparent 46%, #700 46%, #700 54%, transparent 54%) left/1.6rem 2.2rem;
+    bottom: 10px;
+    height: 2.6rem;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Train positioning and movement */
+.train {
+    position: absolute;
+    bottom: 12.6px;
+    height: 10rem;
+    left: -36rem; /* Show part of the train */
+    width: 44rem;
+    z-index: 10;
+    filter: drop-shadow(0 0 0.5rem #f00);
+    transition: left 5s linear;
+}
+
+.moving-train {
+    left: calc(100% + 10px);
+}
+
+.engine-front, .engine-front::before, .engine-front::after {
+    background: #0f0f0f;
+    background: linear-gradient(0deg, #0f0f0f, #262626, #0f0f0f);
+    border: 0.1rem solid rgba(255, 0, 0, 0.5);
+    border-radius: 0 50% 50% 0;
+    border-left: none;
+}
+
+.engine-front {
+    animation: body-upDown 0.3s infinite;
+    border-radius: 0 0.5rem 0.5rem 0;
+    bottom: 1.4rem;
+    height: 4.6rem;
+    right: 0;
+    position: absolute;
+    width: 8rem;
+}
+
+.engine-front::before, .engine-front::after {
+    content: "";
+    position: absolute;
+    height: 70%;
+    right: -0.9rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 0.8rem;
+}
+
+.engine-front::after {
+    height: 40%;
+    right: -1.4rem;
+    width: 0.5rem;
+}
+
+/* Evil face on the front */
+.face {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    width: 3rem;
+    height: 3rem;
+    z-index: 3;
+}
+
+.eye {
+    position: absolute;
+    width: 1rem;
+    height: 0.8rem;
+    background: #f00;
+    border-radius: 50%;
+    top: 0.5rem;
+    box-shadow: 0 0 0.5rem #f00;
+}
+
+.eye.left {
+    left: 0.3rem;
+}
+
+.eye.right {
+    right: 0.3rem;
+}
+
+.mouth {
+    position: absolute;
+    width: 2rem;
+    height: 0.8rem;
+    background: #300;
+    bottom: 0.4rem;
+    left: 0.5rem;
+    border-radius: 0 0 50% 50%;
+    box-shadow: inset 0 -0.2rem 0.2rem rgba(255, 0, 0, 0.5);
+}
+
+.chimney {
+    background: #300;
+    height: 2.2rem;
+    right: 2.5rem;
+    position: absolute;
+    top: -2.3rem;
+    width: 1.7rem;
+}
+
+.chimney::before {
+    content: "";
+    position: absolute;
+    animation: up-down 0.3s infinite;
+    border-bottom: none;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 0.8rem solid #f00;
+    left: 50%;
+    top: -0.9rem;
+    transform: translate(-50%, 0);
+    width: 160%;
+}
+
+.smoke {
+    animation: move-doom-smoke 0.8s linear infinite;
+    background: rgba(100, 0, 0, 0.5);
+    border-radius: 50%;
+    height: 1.4rem;
+    right: 0.2rem;
+    position: absolute;
+    top: -1.5rem;
+    width: 0.8rem;
+    z-index: -1;
+}
+
+.smoke-2 {
+    animation-delay: 0.2s;
+    right: 0.4rem;
+}
+
+.smoke-3 {
+    animation-delay: 0.4s;
+    right: 0.6rem;
+}
+
+.smoke-4 {
+    animation-delay: 0.6s;
+    right: 0.8rem;
+}
+
+.engine-body {
+    animation: body-upDown 0.3s 0.1s infinite;
+    background: #700;
+    background: linear-gradient(0deg, #300, #700, #300);
+    border-radius: 0 0.4rem 0 0;
+    bottom: 1.4rem;
+    height: 7rem;
+    right: 8rem;
+    position: absolute;
+    width: 5rem;
+}
+
+.engine-body::before, .engine-body::after {
+    content: "";
+    right: 50%;
+    position: absolute;
+    transform: translate(50%, 0);
+}
+
+.engine-body::before {
+    animation: up-down 0.3s 0.2s infinite;
+    background: #400;
+    background: linear-gradient(0deg, #400, #700, #400);
+    border-radius: 50% 50% 0 0;
+    height: 1.2rem;
+    top: -1.2rem;
+    width: 130%;
+}
+
+.engine-body::after {
+    background: #700;
+    border-radius: 0.2rem;
+    height: 40%;
+    top: 1rem;
+    width: 45%;
+    box-shadow: inset 0 0 0.5rem rgba(255, 0, 0, 0.8);
+}
+
+.wheel::after, .wheel::before {
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+}
+
+.wheel-holder {
+    height: 2.8rem;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.wheel {
+    animation: rotate-reverse 2s linear infinite;
+    background: #900;
+    border: 0.3rem solid rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    height: 2.8rem;
+    right: 1rem;
+    position: absolute;
+    width: 2.8rem;
+}
+
+.wheel-2 {
+    right: 4.5rem;
+    z-index: 1;
+}
+
+.wheel-3 {
+    border-width: 0.5rem;
+    height: 3.8rem;
+    right: 8.7rem;
+    top: -1.1rem;
+    width: 3.8rem;
+}
+
+.wheel-4 {
+    right: 15.7rem;
+}
+
+.wheel-5 {
+    right: 19.5rem;
+}
+
+.wheel-6 {
+    right: 25.7rem;
+}
+
+.wheel-7 {
+    right: 29.5rem;
+}
+
+.wheel-8 {
+    right: 35.7rem;
+}
+
+.wheel-9 {
+    right: 39.5rem;
+}
+
+.wheel::before, .wheel::after {
+    content: "";
+    position: absolute;
+}
+
+.wheel::before {
+    background: rgba(255, 0, 0, 0.3);
+    height: 86%;
+    width: 0.2rem;
+}
+
+.wheel::after {
+    background: #300;
+    background: radial-gradient(circle at center, #700 30%, #300 30%);
+    border-radius: 50%;
+    height: 40%;
+    width: 40%;
+}
+
+.compartment {
+    animation: body-upDown 0.3s infinite;
+    background: #300;
+    background: linear-gradient(#300 50%, #500);
+    border-radius: 0 0.3rem 0.3rem 0;
+    bottom: 1.4rem;
+    height: 5rem;
+    right: 15rem;
+    position: absolute;
+    width: 8rem;
+}
+
+.compartment-two {
+    animation: body-upDown 0.3s 0.1s infinite;
+    right: 25rem;
+}
+
+.compartment-two .compartment-window::before {
+    animation: up-down 0.3s 0.3s infinite;
+}
+
+.compartment-three {
+    animation: body-upDown 0.3s 0.2s infinite;
+    right: 35rem;
+}
+
+.compartment-three .compartment-window::before {
+    animation: up-down 0.35s infinite;
+}
+
+.compartment::before, .compartment::after {
+    background: black;
+    border: 0.4rem solid transparent;
+    bottom: 0.4rem;
+    box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.3);
+    content: "";
+    height: 0.8rem;
+    position: absolute;
+    width: 0.9rem;
+}
+
+.compartment::before {
+    border-right: 0.4rem solid rgba(255, 0, 0, 0.3);
+    right: -0.9rem;
+}
+
+.compartment::after {
+    border-left: 0.4rem solid rgba(255, 0, 0, 0.3);
+    right: -2rem;
+}
+
+.compartment-window {
+    background: #500;
+    background: linear-gradient(90deg, transparent 0.8rem, #300 0.8rem) right/2.4rem 100%;
+    height: 40%;
+    position: absolute;
+    top: 0.7rem;
+    width: 100%;
+}
+
+.compartment-window::before {
+    content: "";
+    position: absolute;
+    animation: up-down 0.3s 0.1s infinite;
+    background: #200;
+    border-radius: 50% 50% 0 0;
+    height: 0.6rem;
+    right: 50%;
+    top: -1.4rem;
+    transform: translate(50%, 0);
+    width: 110%;
+}
+
+/* Ghosts in windows */
+.ghost {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50% 50% 0 0;
+    top: 0.3rem;
+    animation: ghost-float 2s infinite;
+}
+
+.ghost.one {
+    left: 1rem;
+}
+
+.ghost.two {
+    left: 4rem;
+    animation-delay: 0.7s;
+}
+
+.ghost-eyes {
+    position: absolute;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: #f00;
+    border-radius: 50%;
+    top: 0.4rem;
+    box-shadow: 0 0 0.2rem #f00;
+}
+
+.ghost-eyes.left {
+    left: 0.3rem;
+}
+
+.ghost-eyes.right {
+    right: 0.3rem;
+}
+
+/* Spinning wheel mechanism */
+.wheel-joint {
+    animation: wheel-joint-reverse 2s linear infinite;
+    background: #700;
+    border-radius: 0.6rem;
+    height: 0.4rem;
+    position: absolute;
+    left: 0.4rem;
+    top: calc(50% - 0.2rem);
+    transform-origin: 0% 50%;
+    width: 3.6rem;
+    z-index: 1;
+}
+
+.wheel-joint::before, .wheel-joint::after {
+    background: #333;
+    border: 0.1rem solid #700;
+    border-radius: 50%;
+    content: "";
+    height: 0.8rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 0.8rem;
+}
+
+.wheel-joint::before {
+    right: -0.4rem;
+}
+
+.wheel-joint::after {
+    left: -0.4rem;
+}
+
+.wheel-joint-2 {
+    right: 1.8rem;
+    left: auto;
+    transform: rotate(-15deg);
+    transform-origin: 100% 50%;
+    width: 4.4rem;
+}
+
+.wheel-joint-2::before {
+    height: 1.1rem;
+    width: 1.1rem;
+}
+
+/* Keyframes for train */
+@keyframes up-down {
+    0%, 100% {
+        transform: translate(50%, 0);
+    }
+    50% {
+        transform: translate(50%, -0.3rem);
+    }
+}
+
+@keyframes rotate-reverse {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes body-upDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes move-doom-smoke {
+    0% {
+        filter: blur(0);
+        opacity: 1;
+    }
+    50% {
+        filter: blur(0.2rem);
+        opacity: 0.6;
+        transform: translate(0, -3rem) scale(2);
+    }
+    100% {
+        filter: blur(0.3rem);
+        opacity: 0;
+        transform: translate(-2.5rem, -6rem) scale(3);
+    }
+}
+
+@keyframes wheel-joint-reverse {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes ghost-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+/* Original CSS for game layout */
 #scenario {
     font-size: 1.2em;
     margin: 20px 0;
@@ -282,7 +745,7 @@ h1 {
     padding: 12px;
     border-radius: 5px;
     color: #f0f0f0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Ubuntu', monospace;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -414,86 +877,204 @@ h1 {
     100% { box-shadow: 0 0 30px rgba(0, 204, 102, 0.8); }
 }
 
-/* Track styles */
-.doom-track {
-    position: relative;
-    background: #300;
-    overflow: hidden;
+/* Track styles for doom and safe routes */
+.doom-track .bridge {
+    border-color: #700;
+    background:
+        linear-gradient(55deg, transparent 46%, #900 46%, #900 54%, transparent 54%) left/1.6rem 2.2rem,
+        linear-gradient(-55deg, transparent 46%, #900 46%, #900 54%, transparent 54%) left/1.6rem 2.2rem;
 }
 
-.doom-track:before {
-    content: '';
+.doom-track .center::before {
+    box-shadow: 0 0 5rem 1.5rem rgba(255, 0, 0, 0.5);
+}
+
+.safe-track .bridge {
+    border-color: #063;
+    background:
+        linear-gradient(55deg, transparent 46%, #063 46%, #063 54%, transparent 54%) left/1.6rem 2.2rem,
+        linear-gradient(-55deg, transparent 46%, #063 46%, #063 54%, transparent 54%) left/1.6rem 2.2rem;
+}
+
+.safe-track .center {
+    background: linear-gradient(#052, #031 60%);
+}
+
+.safe-track .center::before {
+    background: rgba(0, 204, 102, 0.2);
+    box-shadow: 0 0 5rem 1rem rgba(0, 204, 102, 0.3);
+}
+
+.safe-track .mountains::before, .safe-track .mountains::after {
+    background: linear-gradient(#052, #031 50%);
+}
+
+/* Add a reset for all animations when we need to restart them */
+.reset-animation {
+    animation: none !important;
+}
+
+/* Safe pulse animation for celebratory effects */
+@keyframes safe-pulse {
+    0% { box-shadow: 0 0 5px #0c6; }
+    100% { box-shadow: 0 0 15px #0c6; }
+}
+
+
+/* Ensure smooth transitions for face expressions */
+.eye, .mouth {
+    transition: all 0.5s ease-in-out;
+}
+
+/* Eyebrow additions for more expressive faces */
+.face::before, .face::after {
+    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        90deg,
-        #700,
-        #700 15px,
-        #500 15px,
-        #500 30px
-    );
-    animation: trackMovement 1.5s linear infinite;
+    width: 1.2rem;
+    height: 0.2rem;
+    background: #600;
+    top: 0.2rem;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
-.doom-track:after {
-    content: '';
+.face::before {
+    left: 0.2rem;
+    transform: rotate(0deg);
+}
+
+.face::after {
+    right: 0.2rem;
+    transform: rotate(0deg);
+}
+
+/* Eyebrow states for different fear levels */
+.face.concerned::before, .face.concerned::after {
+    opacity: 0.8;
+    top: 0.1rem;
+}
+
+.face.concerned::before {
+    transform: rotate(15deg);
+}
+
+.face.concerned::after {
+    transform: rotate(-15deg);
+}
+
+.face.worried::before, .face.worried::after {
+    opacity: 1;
+    top: 0rem;
+}
+
+.face.worried::before {
+    transform: rotate(30deg);
+}
+
+.face.worried::after {
+    transform: rotate(-30deg);
+}
+
+.face.terrified::before, .face.terrified::after {
+    opacity: 1;
+    top: -0.2rem;
+}
+
+.face.terrified::before {
+    transform: rotate(45deg);
+}
+
+.face.terrified::after {
+    transform: rotate(-45deg);
+}
+
+/* Happy face for safe route */
+.face.happy::before, .face.happy::after {
+    background: #063;
+    opacity: 0.8;
+    top: 0.7rem;
+}
+
+.face.happy::before {
+    left: 0.1rem;
+    transform: rotate(-30deg);
+}
+
+.face.happy::after {
+    right: 0.1rem;
+    transform: rotate(30deg);
+}
+
+/* Trembling animation for fearful expressions */
+@keyframes fear-tremble {
+    0% { transform: translateX(-1px) translateY(0); }
+    25% { transform: translateX(1px) translateY(1px); }
+    50% { transform: translateX(-1px) translateY(0); }
+    75% { transform: translateX(1px) translateY(-1px); }
+    100% { transform: translateX(-1px) translateY(0); }
+}
+
+/* Sweating effect for worried train */
+.face.worried::after {
+    animation: sweat-drop 3s infinite;
+}
+
+@keyframes sweat-drop {
+    0%, 100% {
+        box-shadow: none;
+    }
+    50% {
+        box-shadow: 0.8rem 0.5rem 0 -0.1rem rgba(0, 100, 255, 0.5),
+                    -0.7rem 0.7rem 0 -0.1rem rgba(0, 100, 255, 0.5);
+    }
+}
+
+/* Pupil additions for more expressive eyes */
+.eye::after {
+    content: "";
     position: absolute;
-    top: -5px;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, transparent, #f00, transparent);
-    animation: fire-glow 2s infinite alternate;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
 }
 
-@keyframes fire-glow {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
+/* Pupils contract with fear */
+.eye.fearful::after {
+    width: 0.25rem;
+    height: 0.25rem;
 }
 
-.safe-track {
-    position: relative;
-    background: #031;
-    overflow: hidden;
+.eye.terrified::after {
+    width: 0.15rem;
+    height: 0.15rem;
 }
 
-.safe-track:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        90deg,
-        #053,
-        #053 15px,
-        #042 15px,
-        #042 30px
-    );
-    animation: trackMovement 3s linear infinite;
+/* Pupils dilate for safe/happy */
+.eye.happy::after {
+    width: 0.6rem;
+    height: 0.6rem;
+    background: #000;
 }
 
-.safe-track:after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 0;
-    right: 0;
-    height: 8px;
-    background: linear-gradient(90deg, transparent, #6f6, transparent);
-    animation: safe-glow 3s infinite alternate;
+/* Blinking animation for the train */
+@keyframes blink {
+    0%, 90%, 100% {
+        height: 0.8rem;
+        transform: translateY(0);
+    }
+    95% {
+        height: 0.1rem;
+        transform: translateY(0.35rem);
+    }
 }
 
-@keyframes safe-glow {
-    0% { opacity: 0.5; transform: translateY(1px); }
-    100% { opacity: 0.9; transform: translateY(0); }
-}
-
-@keyframes trainMovement {
-    0% { left: 0; }
-    100% { left: calc(100% - 120px); }
-}
-
-.moving-train {
-    animation: trainMovement 3s linear forwards;
+/* Add this animation occasionally */
+.eye.blinking {
+    animation: blink 4s infinite;
 }

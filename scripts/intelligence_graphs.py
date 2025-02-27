@@ -22,9 +22,9 @@ plt.scatter(avg_human_x, avg_human_y, color='green', s=100, zorder=5)
 plt.scatter(einstein_x, einstein_y, color='purple', s=100, zorder=5)
 
 # Add labels near the dots
-plt.text(chicken_x + 0.3, chicken_y - 1, 'Chicken', fontsize=12, color='red')
-plt.text(avg_human_x - 0.6, avg_human_y - 6, 'Average Human', fontsize=12, color='green')
-plt.text(einstein_x + 0.2, einstein_y + 2, 'Einstein', fontsize=12, color='purple')
+plt.text(chicken_x + 0.3, chicken_y - 1, 'Chicken', fontsize=16, color='red')
+plt.text(avg_human_x - 0.6, avg_human_y - 6, 'Average Human', fontsize=16, color='green')
+plt.text(einstein_x + 0.2, einstein_y + 2, 'Einstein', fontsize=16, color='purple')
 
 # Set labels
 plt.ylabel('Intelligence', fontsize=14)
@@ -61,10 +61,10 @@ plt.scatter(einstein_x2, einstein_y2, color='purple', s=100, zorder=5)
 plt.scatter(superintelligence_x2, superintelligence_y2, color='darkblue', s=100, zorder=5)
 
 # Add labels near the dots but not overlapping - moved labels farther down
-plt.text(chicken_x2 - 0.4, chicken_y2 - 95, 'Chicken', fontsize=12, color='red')  # Moved farther below the dot
-plt.text(avg_human_x2 + 0.1, avg_human_y2 - 100, 'Average Human', fontsize=12, color='green')  # Moved farther below
-plt.text(einstein_x2 + 0.2, einstein_y2 - 25, 'Einstein', fontsize=12, color='purple')
-plt.text(superintelligence_x2 - 0.7, superintelligence_y2 - 100, 'Superintelligence', fontsize=12, color='darkblue', fontweight='bold')
+plt.text(chicken_x2 - 0.4, chicken_y2 - 95, 'Chicken', fontsize=16, color='red')  # Moved farther below the dot
+plt.text(avg_human_x2 + 0.1, avg_human_y2 - 100, 'Average Human', fontsize=16, color='green')  # Moved farther below
+plt.text(einstein_x2 + 0.2, einstein_y2 - 25, 'Einstein', fontsize=16, color='purple')
+plt.text(superintelligence_x2 - 1.7, superintelligence_y2 - 110, 'Superintelligence', fontsize=16, color='darkblue', fontweight='bold')
 
 # Set labels
 plt.ylabel('Intelligence', fontsize=14)
