@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doom Train</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="game">
+            <h1>Doom Train</h1>
+            <div id="train-animation">
+                <div id="train">
+                    <div class="smoke-particle"></div>
+                    <div class="smoke-particle"></div>
+                    <div class="smoke-particle"></div>
+                    <div class="train-window"></div>
+                    <div class="train-window"></div>
+                </div>
+                <div id="tracks"></div>
+            </div>
+            <div id="scenario">
+                <p id="scenario-text">You're on a train that is heading towards AI doom, if it can reach the last stop. The goal of this game is not to convince you that AI will doom humanity, but to determine why you think doom is not likely. Which stop do you get off the AI doom train?</p>
+            </div>
+            <div id="question-container" style="display: none;">
+                <h2 id="question"></h2>
+                <div id="choices"></div>
+            </div>
+            <div id="game-over" style="display: none;">
+                <h2 id="outcome-title"></h2>
+                <p id="outcome-description"></p>
+                <button id="restart">Ride Again</button>
+            </div>
+            <button id="start" class="btn">Begin Journey</button>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>
