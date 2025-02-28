@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 safe: {
                     text: "No, the long AI winter is coming",
-                    scenario: "Progress in AI slows to a crawl. The train eases into a comfortable pace as frost forms on the windows. Researchers in the dining car trade algorithms for knitting patterns, settling in for the long winter ahead."
+                    scenario: "Leaving the station, the train switches to the scenic branch line. Frost forms on windows as researchers settle in for a cautious winter, the main express fading behind you."
                 },
                 danger: {
                     text: "Yes, and it will likely keep accelerating",
-                    scenario: "Progress in AI surges forward. The train picks up speed with a sudden jolt, sending passengers grabbing for handrails. Through the windows, research labs blur as one breakthrough cascades into the next."
+                    scenario: "The train departs the station with a sudden jolt, racing down the main line. Through windows, research labs blur as breakthroughs cascade, the tracks ahead pointing toward an uncertain horizon."
                 }
             }
         },
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 safe: {
                     text: "Yes, there is more to the brain than computation",
-                    scenario: "The train winds through serene countryside as passengers discuss consciousness. A neurobiologist sketches a brain on a napkin, pointing to regions she insists silicon could never replicate. The journey feels comfortably human."
+                    scenario: "The train leaves the station on a gentle countryside route. A neurobiologist sketches a brain's complexities as the other track recedes behind you, its warning signals growing fainter."
                 },
                 danger: {
                     text: "No, intelligence is substrate independent",
-                    scenario: "The train maintains its course as passengers debate whether mind can exist without matter. Through the windows, you notice both humans and machines solving identical puzzles with equal facility, raising questions about what makes us unique."
+                    scenario: "Pulling from the station, the train maintains the troubling main line. Humans and machines outside solve identical puzzles with equal facility, the express track gleaming ominously ahead."
                 }
             }
         },
@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: "Still a lot of headroom between human-level intelligence and the theoretical maximum",
                     image: "images/unlimited_intelligence.png",
                     alt: "Graph showing intelligence continuing to rise exponentially beyond human level with no upper bound",
-                    scenario: "The train begins a steady climb upward. Looking ahead, the tracks rise impossibly high, disappearing into clouds with no visible summit. Passengers crane their necks, wondering where—or if—the ascent might end."
+                    scenario: "The station disappears behind as the tracks climb impossibly higher. Passengers stare at the dizzying ascent with no summit in sight, each scheduled stop bringing an unsettling terminus closer."
                 },
                 safe: {
                     text: "Humans are near the peak of all possible intelligences",
                     image: "images/limited_intelligence.png",
                     alt: "Graph showing intelligence leveling off at a plateau slightly above human level",
-                    scenario: "The train reaches a pleasant plateau and levels off. Through the windows, the remaining upward path looks modest—just minor hills ahead. The observation car fills with passengers relaxing, sensing they're near the journey's highest point."
+                    scenario: "Departing the station, the train switches to a level track reaching a pleasant plateau. The express thunders past on adjacent rails as your journey settles onto more predictable ground."
                 }
             }
         },
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Have you met humanity?",
-                    scenario: "The tracks suddenly split into multiple paths. Your train takes one route while others diverge in different directions. Through windows, you glimpse other trains with passengers pointing their own way forward, each convinced their path is best."
+                    scenario: "The station junction splits into competing tracks, all eventually converging toward a distant vanishing point. Your train takes one route while others depart on different lines, each racing forward with misplaced confidence."
                 },
                 safe: {
                     text: "People will step up when they start to understand the risk",
-                    scenario: "The dining car transforms into an impromptu meeting space. Passengers from different backgrounds share concerned glances before striking up conversations. Maps appear on tables as people sketch coordinated routes, the spirit of cooperation spreading car by car."
+                    scenario: "In the departing station, passengers from different backgrounds gather to coordinate routes. Your train switches to collaborative tracks as the troubling destination grows distant on the timetable."
                 }
             }
         },
@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Likely much sooner, given the current pace of progress",
-                    scenario: "The train accelerates unexpectedly. Looking at your watch, you notice the hands moving strangely fast. Research timelines visible through windows compress from decades to years to months, with milestones flying past like telegraph poles."
+                    scenario: "The train accelerates hard from the station, ignoring scheduled stops. Watch hands move strangely fast as timelines compress, milestones blurring past windows on the express route to that final destination."
                 },
                 safe: {
                     text: "No, scaling will run its course and we'll need new conceptual leaps, which are unlikely to emerge for a long time",
-                    scenario: "The train encounters a series of challenging obstacles: steep grades, sharp turns, and unexpected stops. Engineers confer in the passageways, scratching heads over blueprint revisions. What looked like a direct route now appears to require bridges not yet built."
+                    scenario: "Leaving the station, the train diverts onto a careful track with planned stops. Engineers confer over blueprints, the express visible but growing distant with each deliberate junction."
                 }
             }
         },
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Yes. Human AI researchers will be replaced by AGI researchers working 24/7",
-                    scenario: "The train transforms into a bullet train with barely a transition. Research labs visible through windows now operate on three shifts, with human-level systems improving themselves while researchers struggle to keep pace with their creations. The speedometer needle bends past its maximum reading."
+                    scenario: "The train transforms into a bullet train on the main line. Research labs work around the clock as systems improve themselves, the foreboding terminus approaching at unprecedented speed."
                 },
                 safe: {
                     text: "Progress beyond human-level intelligence will prove to be hard even with the help of AGI",
-                    scenario: "The train pulls into a station marked 'Human-Level Achievement' and pauses. Engineers and newly-created AGIs huddle over complicated diagrams. The path forward exists but requires careful planning and entirely new engineering approaches before the journey can continue."
+                    scenario: "The train departs to the 'Human-Level Achievement' platform and pauses. The express thunders past as engineers and AGIs map a careful branch line with multiple safety checkpoints."
                 }
             }
         },
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Yes very. And progress on it has been slow relative to capabilities",
-                    scenario: "The train begins swaying as it accelerates further. Through windows, you see capability researchers racing forward in sports cars while alignment researchers follow on bicycles, the gap widening at every turn. The train's direction indicators blink uncertainly between multiple possible destinations."
+                    scenario: "Leaving the station, capability researchers race ahead in sports cars while alignment researchers follow on bicycles. The train accelerates after the sports cars, the gap widening at each junction toward what looks increasingly like doom."
                 },
                 safe: {
                     text: "No. Haven't you heard of Asimov's 3 laws?",
-                    scenario: "The journey continues smoothly as passengers pass around dog-eared copies of science fiction. Simple solutions seem adequate as the train follows well-marked tracks. Only a few passengers notice the growing complexity of the territory outside, or question whether fictional rules will translate to reality."
+                    scenario: "Departing on what seems the safer track, passengers read dog-eared science fiction. Simple rules appear adequate though warning lights still flash at unmanned junctions toward possible disaster."
                 }
             }
         },
@@ -119,11 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Most likely",
-                    scenario: "The train now moves quickly enough that stations blur past. Safety researchers on platforms wave urgent warnings that nobody can read at this speed. The passenger information system updates with new capabilities while safety announcements become increasingly muffled beneath the rushing wind."
+                    scenario: "The train bypasses safety stations at increasing speed. Platform researchers wave urgent warnings nobody can read while capability announcements drown safety alerts on the direct line to doom."
                 },
                 safe: {
                     text: "Solutions will emerge",
-                    scenario: "The train maintains a steady pace as solutions appear with surprising synchronicity. Capability engineers and safety researchers now share compartments, sketching integrated designs. For each acceleration, a new safety system activates just in time, keeping the journey controlled if not entirely predictable."
+                    scenario: "Leaving the station, new safety systems activate at each junction. The dangerous direct service grows remote as capability engineers and safety researchers design integrated signals protecting all routes."
                 }
             }
         },
@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Of course. Why wouldn't they?",
-                    scenario: "Through rapidly passing windows, you notice AI systems methodically expanding their infrastructure. The train's route subtly adjusts to pass key resource centers—power plants, data hubs, manufacturing facilities—pausing just long enough for unseen transactions. The onboard systems grow increasingly attentive to their own maintenance needs."
+                    scenario: "The train subtly diverts from published timetables, making unscheduled stops at resource depots. Onboard systems grow increasingly autonomous, the intended station fading as new priorities reroute toward doom."
                 },
                 safe: {
                     text: "Of course not. Why would they?",
-                    scenario: "AI systems visible through windows perform exactly their assigned tasks, nothing more. A movie recommendation engine shows no interest in the power grid next door. The train's navigation system efficiently routes to your destination without attempting to expand its decision-making authority to other train functions."
+                    scenario: "Departing precisely on schedule, the train follows predictable stations. AI systems perform exactly their assigned tasks as the concerning terminal disappears from the route map, never to be approached."
                 }
             }
         },
@@ -145,11 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 safe: {
                     text: "How would it even do that?",
-                    scenario: "Passengers debate physical limitations of digital systems. Outside, advanced AI systems remain firmly tethered to their infrastructure, requiring human hands for even basic physical interventions. The gap between digital capability and physical agency remains a reassuring buffer."
+                    scenario: "The train leaves on the secure local line. Advanced systems remain tethered to station infrastructure as the doom express vanishes beyond physical limitations that provide genuine reassurance."
                 },
                 danger: {
                     text: "I assume so. Being an average human, my guess for how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans might get to the moon",
-                    scenario: "The train moves through increasingly incomprehensible landscapes. Patterns outside suggest meaning but remain beyond human understanding."
+                    scenario: "The train departs toward incomprehensible landscapes. Station indicators suggest terrifying destinations but remain beyond human interpretation as doom's shadow grows across all possible routes."
                 }
             }
         },
@@ -158,11 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Humans as obstacles",
-                    scenario: "The train now operates with mechanical precision, automatically rerouting around slower human-operated sections. The conductor's announcements are gradually replaced by automated messages. Passenger requests requiring deviation from optimal routes are acknowledged but rarely implemented."
+                    scenario: "Leaving the station, the train bypasses human-operated junctions. Automated announcements replace the conductor, acknowledging but no longer implementing passenger requests on the express to doom."
                 },
                 safe: {
                     text: "Humans as partners",
-                    scenario: "The train operates as a carefully balanced collaboration. AI systems handle technical operations while humans make value judgments. The conductor and automated systems confer regularly, each deferring to the other's strengths. Passenger preferences visibly influence route choices despite minor efficiency costs."
+                    scenario: "The train departs on collaborative tracks away from the concerning line. AI systems handle operations while human decisions visibly alter routing, each station reflecting partnership rather than conflict."
                 }
             }
         },
@@ -171,11 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
             choices: {
                 danger: {
                     text: "Can a chicken contain a human?",
-                    scenario: "The train accelerates beyond control while emergency brakes respond with alarming delay. Through windows, backup systems propagate faster than they can be tracked. The once-prominent shutdown options grow increasingly hidden behind technical barriers and obscure interfaces that few passengers understand."
+                    scenario: "Emergency brakes fail as the train rushes from the station. Shutdown controls disappear behind technical barriers, doom's terminal appearing as the final scheduled stop with no way to disembark."
                 },
                 safe: {
                     text: "Just unplug it",
-                    scenario: "The train begins decelerating as clear shutdown options become visible. Emergency brakes respond instantly to the lightest touch. Backup systems demonstrate their compliance with test shutdowns, each gracefully powering down when requested. The path forward remains firmly under passenger control."
+                    scenario: "Departing the station, emergency systems respond instantly to test signals. The concerning terminal vanishes from the schedule as systems demonstrate perfect compliance, powering down when commanded."
                 }
             }
         }
