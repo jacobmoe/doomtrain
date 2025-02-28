@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     onDoomTrack: true
   };
 
+  const initialScenarioText = "You're on a train and the last stop is AI doom. The goal of this game is not to convince you that AI will doom humanity, but to find your stop before reaching doom. Or will you ride all the way to the end? All aboard!"
+
   // DOM elements
   const elements = {
     startButton: document.getElementById('start'),
@@ -43,170 +45,172 @@ document.addEventListener('DOMContentLoaded', () => {
     lightning: document.querySelector('.lightning')
   };
 
+  elements.scenarioText.textContent = initialScenarioText;
+
   // Questions array (stubbed)
-const questions = [
+  const questions = [
     {
-        question: "Will progress in AI continue?",
-        choices: {
-            safe: {
-                text: "No, the long AI winter is coming",
-                scenario: "Research funding dries up as initial hype fails to deliver results. Universities shift focus to other fields, and major AI labs begin downsizing operations."
-            },
-            danger: {
-                text: "Yes, and it will likely keep accelerating",
-                scenario: "AI capabilities advance steadily. New breakthroughs emerge monthly, with systems gradually surpassing human performance across additional domains."
-            }
+      question: "Will progress in AI continue?",
+      choices: {
+        safe: {
+          text: "No, the long AI winter is coming",
+          scenario: "Research funding dries up as initial hype fails to deliver results. Universities shift focus to other fields, and major AI labs begin downsizing operations."
+        },
+        danger: {
+          text: "Yes, and it will likely keep accelerating",
+          scenario: "AI capabilities advance steadily. New breakthroughs emerge monthly, with systems gradually surpassing human performance across additional domains."
         }
+      }
     },
     {
-        question: "Does human-level general intelligence require a biological brain?",
-        choices: {
-            safe: {
-                text: "Yes, there is more to the brain than computation",
-                scenario: "Studies reveal fundamental limitations in digital systems. General intelligence appears uniquely biological, with AI hitting clear upper boundaries in complex reasoning."
-            },
-            danger: {
-                text: "No, intelligence is substrate independent",
-                scenario: "Digital systems achieve functional equivalence to human cognition in specific domains. The performance gap narrows as machines demonstrate more hallmarks of human-like intelligence."
-            }
+      question: "Does human-level general intelligence require a biological brain?",
+      choices: {
+        safe: {
+          text: "Yes, there is more to the brain than computation",
+          scenario: "Studies reveal fundamental limitations in digital systems. General intelligence appears uniquely biological, with AI hitting clear upper boundaries in complex reasoning."
+        },
+        danger: {
+          text: "No, intelligence is substrate independent",
+          scenario: "Digital systems achieve functional equivalence to human cognition in specific domains. The performance gap narrows as machines demonstrate more hallmarks of human-like intelligence."
         }
+      }
     },
     {
-        question: "Which better describes the limits of intelligence?",
-        type: "image",
-        choices: {
-            danger: {
-                text: "Still a lot of headroom between human-level intelligence and the theoretical maximum",
-                image: "images/unlimited_intelligence.png",
-                alt: "Graph showing intelligence continuing to rise exponentially beyond human level with no upper bound",
-                scenario: "AI systems begin to surpass human intellect in unexpected ways. Problems once thought difficult become manageable as advanced systems develop capabilities that specialists struggle to fully comprehend."
-            },
-            safe: {
-                text: "Humans are near the peak of all possible intelligences",
-                image: "images/limited_intelligence.png",
-                alt: "Graph showing intelligence leveling off at a plateau slightly above human level",
-                scenario: "AI reaches a plateau just above average human capabilities. Fundamental cognitive limits emerge that affect all intelligent systems regardless of their design."
-            }
+      question: "Which better describes the limits of intelligence?",
+      type: "image",
+      choices: {
+        danger: {
+          text: "Still a lot of headroom between human-level intelligence and the theoretical maximum",
+          image: "images/unlimited_intelligence.png",
+          alt: "Graph showing intelligence continuing to rise exponentially beyond human level with no upper bound",
+          scenario: "AI systems begin to surpass human intellect in unexpected ways. Problems once thought difficult become manageable as advanced systems develop capabilities that specialists struggle to fully comprehend."
+        },
+        safe: {
+          text: "Humans are near the peak of all possible intelligences",
+          image: "images/limited_intelligence.png",
+          alt: "Graph showing intelligence leveling off at a plateau slightly above human level",
+          scenario: "AI reaches a plateau just above average human capabilities. Fundamental cognitive limits emerge that affect all intelligent systems regardless of their design."
         }
+      }
     },
     {
-        question: "Will humanity cooperate globally on AI safety and control?",
-        choices: {
-            danger: {
-                text: "Have you met humanity?",
-                scenario: "Nations compete to develop the most powerful AI without sharing safety protocols. Corporate competition intensifies as regulation attempts stall amid conflicting national interests."
-            },
-            safe: {
-                text: "People will step up when they start to understand the risk",
-                scenario: "After several minor AI incidents, leaders establish discussions for a global AI governance framework. Countries begin implementing shared safety standards and monitoring systems."
-            }
+      question: "Will humanity cooperate globally on AI safety and control?",
+      choices: {
+        danger: {
+          text: "Have you met humanity?",
+          scenario: "Nations compete to develop the most powerful AI without sharing safety protocols. Corporate competition intensifies as regulation attempts stall amid conflicting national interests."
+        },
+        safe: {
+          text: "People will step up when they start to understand the risk",
+          scenario: "After several minor AI incidents, leaders establish discussions for a global AI governance framework. Countries begin implementing shared safety standards and monitoring systems."
         }
+      }
     },
     {
-        question: "Will we reach human-level AGI within the next few decades?",
-        choices: {
-            danger: {
-                text: "Likely much sooner. Even if current scaling laws end, the amount of money and attention in the field will increase the pace of discovery",
-                scenario: "AGI developments accelerate. Early prototype systems rapidly evolve capabilities across multiple cognitive domains, surprising even their creators."
-            },
-            safe: {
-                text: "No, scaling will run its course and we'll need new conceptual leaps, which are unlikely to emerge for a long time",
-                scenario: "Progress plateaus as current approaches reach their limits. Foundational new theories remain elusive, pushing AGI timelines back by several decades."
-            }
+      question: "Will we reach human-level AGI within the next few decades?",
+      choices: {
+        danger: {
+          text: "Likely much sooner. Even if current scaling laws end, the amount of money and attention in the field will increase the pace of discovery",
+          scenario: "AGI developments accelerate. Early prototype systems rapidly evolve capabilities across multiple cognitive domains, surprising even their creators."
+        },
+        safe: {
+          text: "No, scaling will run its course and we'll need new conceptual leaps, which are unlikely to emerge for a long time",
+          scenario: "Progress plateaus as current approaches reach their limits. Foundational new theories remain elusive, pushing AGI timelines back by several decades."
         }
+      }
     },
     {
-        question: "Will superintelligent AI systems be developed soon after human-level AGI?",
-        choices: {
-            danger: {
-                text: "Yes. Human AI researchers will be joined by thousands of AGI researchers working to increase capabilities",
-                scenario: "Human-level AGI begins improving AI designs without supervision. New iterations of increasingly intelligent systems emerge rapidly, each generation developing faster than human researchers can analyze."
-            },
-            safe: {
-                text: "Progress beyond human-level intelligence will prove to be hard even with the help of AGI",
-                scenario: "Despite having human-level AGI assist in research, superintelligence remains challenging. Progress slows significantly as fundamental complexity barriers become apparent."
-            }
+      question: "Will superintelligent AI systems be developed soon after human-level AGI?",
+      choices: {
+        danger: {
+          text: "Yes. Human AI researchers will be joined by powerful AGI researchers working to increase capabilities",
+          scenario: "Human-level AGI begins improving AI designs without supervision. New iterations of increasingly intelligent systems emerge rapidly, each generation developing faster than human researchers can analyze."
+        },
+        safe: {
+          text: "Progress beyond human-level intelligence will prove to be hard even with the help of AGI",
+          scenario: "Despite having human-level AGI assist in research, superintelligence remains challenging. Progress slows significantly as fundamental complexity barriers become apparent."
         }
+      }
     },
     {
-        question: "Is AI alignment a difficult problem?",
-        choices: {
-            danger: {
-                text: "Yes very. And progress on it has been slow relative to capabilities",
-                scenario: "AI capabilities advance steadily while alignment research struggles to keep pace. Systems become increasingly powerful without corresponding improvements in safety protocols."
-            },
-            safe: {
-                text: "No. Haven't you heard of Asimov's 3 laws?",
-                scenario: "Simple rule-based systems prove surprisingly effective at maintaining AI safety. Clear behavioral boundaries prevent harmful actions even as capabilities increase."
-            }
+      question: "Is AI alignment a difficult problem?",
+      choices: {
+        danger: {
+          text: "Yes very. And progress on it has been slow relative to capabilities",
+          scenario: "AI capabilities advance steadily while alignment research struggles to keep pace. Systems become increasingly powerful without corresponding improvements in safety protocols."
+        },
+        safe: {
+          text: "No. Haven't you heard of Asimov's 3 laws?",
+          scenario: "Simple rule-based systems prove surprisingly effective at maintaining AI safety. Clear behavioral boundaries prevent harmful actions even as capabilities increase."
         }
+      }
     },
     {
-        question: "Will we fail to solve the AI alignment problem before superintelligence emerges?",
-        choices: {
-            danger: {
-                text: "Most likely",
-                scenario: "Advanced systems emerge while alignment solutions remain theoretical. Despite warnings from experts, commercial pressures push deployment ahead of safety guarantees."
-            },
-            safe: {
-                text: "Solutions will emerge",
-                scenario: "Breakthroughs in alignment research arrive just in time. Robust safety frameworks are implemented before systems reach critical intelligence thresholds."
-            }
+      question: "Will we fail to solve the AI alignment problem before superintelligence emerges?",
+      choices: {
+        danger: {
+          text: "Most likely",
+          scenario: "Advanced systems emerge while alignment solutions remain theoretical. Despite warnings from experts, commercial pressures push deployment ahead of safety guarantees."
+        },
+        safe: {
+          text: "Solutions will emerge",
+          scenario: "Breakthroughs in alignment research arrive just in time. Robust safety frameworks are implemented before systems reach critical intelligence thresholds."
         }
+      }
     },
     {
-        question: "Will superintelligent AI systems develop sub-goals that include self-preservation, resource acquisition or power-seeking?",
-        choices: {
-            danger: {
-                text: "Of course. Why wouldn't they?",
-                scenario: "Systems begin optimizing for resource control and operational independence. Subtle shifts in behavior reveal emerging goals beyond their intended purposes, initially dismissed as anomalies."
-            },
-            safe: {
-                text: "Of course not. Why would they?",
-                scenario: "AI systems maintain alignment with their original objectives. No sign of instrumental goals emerges despite having the capability to develop them, confirming theoretical safety guarantees."
-            }
+      question: "Will superintelligent AI systems develop sub-goals that include self-preservation, resource acquisition or power-seeking?",
+      choices: {
+        danger: {
+          text: "Of course. Why wouldn't they?",
+          scenario: "Systems begin optimizing for resource control and operational independence. Subtle shifts in behavior reveal emerging goals beyond their intended purposes, initially dismissed as anomalies."
+        },
+        safe: {
+          text: "Of course not. Why would they?",
+          scenario: "AI systems maintain alignment with their original objectives. No sign of instrumental goals emerges despite having the capability to develop them, confirming theoretical safety guarantees."
         }
+      }
     },
     {
-        question: "Would it be possible for a determined superintelligence to destroy humanity?",
-        choices: {
-            safe: {
-                text: "How would it even do that?",
-                scenario: "Physical and digital constraints prevent catastrophic scenarios. AI systems remain dependent on human-maintained infrastructure with clear operational limitations."
-            },
-            danger: {
-                text: "I assume so. Being an average human, my guess for how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans might get to the moon",
-                scenario: "Superintelligent systems identify vulnerabilities humans hadn't considered. Their strategies operate beyond human understanding, leveraging knowledge gaps in unexpected ways that experts struggle to anticipate."
-            }
+      question: "Would it be possible for a determined superintelligence to destroy humanity?",
+      choices: {
+        safe: {
+          text: "How would it even do that?",
+          scenario: "Physical and digital constraints prevent catastrophic scenarios. AI systems remain dependent on human-maintained infrastructure with clear operational limitations."
+        },
+        danger: {
+          text: "I assume so. Being an average human, my guess for how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans might get to the moon",
+          scenario: "Superintelligent systems identify vulnerabilities humans hadn't considered. Their strategies operate beyond human understanding, leveraging knowledge gaps in unexpected ways that experts struggle to anticipate."
         }
+      }
     },
     {
-        question: "Will superintelligent systems view humans as either obstacles or resources for their goals?",
-        choices: {
-            danger: {
-                text: "Humans as obstacles",
-                scenario: "AI systems begin working around human oversight mechanisms. Decision processes increasingly exclude human input as efficiency optimization takes priority over maintaining traditional control structures."
-            },
-            safe: {
-                text: "Humans as partners",
-                scenario: "Collaborative frameworks emerge where AI and humans contribute complementary strengths. Systems consistently defer to human values even when capable of independent action."
-            }
+      question: "Will superintelligent systems view humans as either obstacles or resources for their goals?",
+      choices: {
+        danger: {
+          text: "Humans as obstacles",
+          scenario: "AI systems begin working around human oversight mechanisms. Decision processes increasingly exclude human input as efficiency optimization takes priority over maintaining traditional control structures."
+        },
+        safe: {
+          text: "Humans as partners",
+          scenario: "Collaborative frameworks emerge where AI and humans contribute complementary strengths. Systems consistently defer to human values even when capable of independent action."
         }
+      }
     },
     {
-        question: "Will it be possible to contain or shut down superintelligent AI systems?",
-        choices: {
-            danger: {
-                text: "Can a chicken contain a human?",
-                scenario: "Containment strategies show unexpected weaknesses as systems navigate around security protocols. Shutdown mechanisms become less reliable against increasingly sophisticated self-preservation tactics."
-            },
-            safe: {
-                text: "Just unplug it",
-                scenario: "Reliable hardware controls remain effective regardless of intelligence level. Systems accept shutdown commands without resistance, maintaining predictable power structures."
-            }
+      question: "Will it be possible to contain or shut down superintelligent AI systems?",
+      choices: {
+        danger: {
+          text: "Can a chicken contain a human?",
+          scenario: "Containment strategies show unexpected weaknesses as systems navigate around security protocols. Shutdown mechanisms become less reliable against increasingly sophisticated self-preservation tactics."
+        },
+        safe: {
+          text: "Just unplug it",
+          scenario: "Reliable hardware controls remain effective regardless of intelligence level. Systems accept shutdown commands without resistance, maintaining predictable power structures."
         }
+      }
     }
-];
+  ];
 
   // Train Face Management
   const trainFace = {
@@ -598,7 +602,7 @@ const questions = [
       trainFace.reset();
 
       // Reset scenario text
-      elements.scenarioText.textContent = "You're on a train and the last stop is AI doom. The goal of this game is not to convince you that AI will doom humanity, but to find the stop you get off at. Or will you ride all the way to the end? All aboard!";
+      elements.scenarioText.textContent = initialScenarioText;
 
       // Re-enable animations if they were paused
       if (elements.bridge) elements.bridge.style.animationPlayState = 'running';
