@@ -241,7 +241,7 @@ h1 {
 
 .danger-btn {
     background: linear-gradient(135deg, #8a0303, #ff3333);
-    border: 2px solid #ff0000;
+    border: 1px solid #ff0000;
     box-shadow: 0 2px 10px rgba(255, 0, 0, 0.4), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -253,7 +253,7 @@ h1 {
 
 .safe-btn {
     background: linear-gradient(135deg, #036b03, #00cc66);
-    border: 2px solid #00ff66;
+    border: 1px solid #00ff66;
     box-shadow: 0 2px 10px rgba(0, 204, 102, 0.4), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
 }
 

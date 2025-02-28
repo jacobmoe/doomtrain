@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ANIMATION = {
     TRAIN: {
       START_POSITION: -6,
-      TRANSITION_TIME: 1500
+      TRANSITION_TIME: 1300
     },
     SPEED: {
       TRACK: { START: 15, END: 0.5 },
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     {
-      question: "Does human-level general intelligence require a biological brain?",
+      question: "Does human-level general intelligence in principle require a biological brain?",
       choices: {
         safe: {
           text: "Yes, there is more to the brain than computation",
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Will we reach human-level AGI within the next few decades?",
       choices: {
         danger: {
-          text: "Probably sooner. Even if current scaling laws end, the amount of money and attention in the field makes further increases in the pace of discovery likely",
+          text: "Probably sooner. Even if current scaling laws end, the amount of money invested and attention on the field makes the pace of discovery unlikely to slow",
           scenario: "AGI developments accelerate. Early prototype systems rapidly evolve capabilities across multiple cognitive domains, surprising even their creators."
         },
         safe: {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Will superintelligent AI systems be developed soon after human-level AGI?",
       choices: {
         danger: {
-          text: "Yes. Human AI researchers will be joined by powerful AGI researchers, making rapid increases in capabilities likely",
+          text: "Yes. Human researchers will be joined by powerful AGI researchers, making rapid increases in capabilities likely",
           scenario: "Human-level AGI begins improving AI designs without supervision. New iterations of increasingly intelligent systems emerge rapidly, each generation developing faster than human researchers can analyze."
         },
         safe: {
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Is AI alignment a difficult problem?",
       choices: {
         danger: {
-          text: "Yes very. And progress on it has been slow relative to capabilities",
+          text: "Yes, very. Progress has been slow relative to capabilities",
           scenario: "AI capabilities advance steadily while alignment research struggles to keep pace. Systems become increasingly powerful without corresponding improvements in safety protocols."
         },
         safe: {
@@ -146,10 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     {
-      question: "Will we fail to solve the AI alignment problem before superintelligence emerges?",
+      question: "Will the AI alignment problem be solved before superintelligence emerges?",
       choices: {
         danger: {
-          text: "Most likely",
+          text: "Unlikely",
           scenario: "Advanced systems emerge while alignment solutions remain theoretical. Despite warnings from experts, commercial pressures push deployment ahead of safety guarantees."
         },
         safe: {
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
           scenario: "Physical and digital constraints prevent catastrophic scenarios. AI systems remain dependent on human-maintained infrastructure with clear operational limitations."
         },
         danger: {
-          text: "I assume so. Being an average human, my guess for how a superintelligence would achieve its goals is worth about as much as a chicken's guess for how humans might get to the moon",
+          text: "A superintelligent agent will find a way to achieve its goals",
           scenario: "Superintelligent systems identify vulnerabilities humans hadn't considered. Their strategies operate beyond human understanding, leveraging knowledge gaps in unexpected ways that experts struggle to anticipate."
         }
       }
