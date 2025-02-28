@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
           scenario: "Research funding dries up as initial hype fails to deliver results. Universities shift focus to other fields, and major AI labs begin downsizing operations."
         },
         danger: {
-          text: "Yes, and it will likely keep accelerating",
+          text: "Seems likely",
           scenario: "AI capabilities advance steadily. New breakthroughs emerge monthly, with systems gradually surpassing human performance across additional domains."
         }
       }
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
           scenario: "Nations compete to develop the most powerful AI without sharing safety protocols. Corporate competition intensifies as regulation attempts stall amid conflicting national interests."
         },
         safe: {
-          text: "People will step up when they start to understand the risk",
+          text: "People will step up when safety risks become obvious",
           scenario: "After several minor AI incidents, leaders establish discussions for a global AI governance framework. Countries begin implementing shared safety standards and monitoring systems."
         }
       }
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Will we reach human-level AGI within the next few decades?",
       choices: {
         danger: {
-          text: "Likely much sooner. Even if current scaling laws end, the amount of money and attention in the field will increase the pace of discovery",
+          text: "Probably sooner. Even if current scaling laws end, the amount of money and attention in the field makes further increases in the pace of discovery likely",
           scenario: "AGI developments accelerate. Early prototype systems rapidly evolve capabilities across multiple cognitive domains, surprising even their creators."
         },
         safe: {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Will superintelligent AI systems be developed soon after human-level AGI?",
       choices: {
         danger: {
-          text: "Yes. Human AI researchers will be joined by powerful AGI researchers working to increase capabilities",
+          text: "Yes. Human AI researchers will be joined by powerful AGI researchers, making rapid increases in capabilities likely",
           scenario: "Human-level AGI begins improving AI designs without supervision. New iterations of increasingly intelligent systems emerge rapidly, each generation developing faster than human researchers can analyze."
         },
         safe: {
