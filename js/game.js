@@ -63,7 +63,7 @@ const questions = [
         choices: {
             safe: {
                 text: "Yes, there is more to the brain than computation",
-                scenario: "Studies reveal fundamental limitations in digital systems. Consciousness appears uniquely biological, with AI hitting clear upper boundaries in complex reasoning."
+                scenario: "Studies reveal fundamental limitations in digital systems. General intelligence appears uniquely biological, with AI hitting clear upper boundaries in complex reasoning."
             },
             danger: {
                 text: "No, intelligence is substrate independent",
@@ -72,7 +72,7 @@ const questions = [
         }
     },
     {
-        question: "Which likely better describes the limits of intelligence?",
+        question: "Which better describes the limits of intelligence?",
         type: "image",
         choices: {
             danger: {
@@ -106,7 +106,7 @@ const questions = [
         question: "Will we reach human-level AGI within the next few decades?",
         choices: {
             danger: {
-                text: "Likely much sooner, given the current pace of progress",
+                text: "Likely much sooner. Even if current scaling laws end, the amount of money and attention in the field will increase the pace of discovery",
                 scenario: "AGI developments accelerate. Early prototype systems rapidly evolve capabilities across multiple cognitive domains, surprising even their creators."
             },
             safe: {
@@ -119,7 +119,7 @@ const questions = [
         question: "Will superintelligent AI systems be developed soon after human-level AGI?",
         choices: {
             danger: {
-                text: "Yes. Human AI researchers will be replaced by AGI researchers working 24/7",
+                text: "Yes. Human AI researchers will be joined by thousands of AGI researchers working to increase capabilities",
                 scenario: "Human-level AGI begins improving AI designs without supervision. New iterations of increasingly intelligent systems emerge rapidly, each generation developing faster than human researchers can analyze."
             },
             safe: {
