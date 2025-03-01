@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       TRANSITION_TIME: 1300
     },
     SPEED: {
-      TRACK: { START: 15, END: 0.5 },
+      TRACK: { START: 12, END: 0.8 },  // Start very slow, end very fast
       BACKGROUND: { START: 30, END: 1.5 },
       MOUNTAIN: { START: 40, END: 4 },
       LIGHTNING: { START: 7, END: 0.3 },
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     onDoomTrack: true
   };
 
-  const initialScenarioText = "You're on a train and the last stop is AI doom. The goal of this game is not to convince you that AI will doom humanity, but to find your stop before reaching doom. Or will you ride all the way to the end? All aboard!"
+  const initialScenarioText = "You're on a train and the last stop is AI doom. The object of the game is to find your stop before we reach doom. Or will you ride all the way to the end? All aboard!"
 
   // DOM elements
   const elements = {
@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rightEye: document.querySelector('.eye.right'),
     mouth: document.querySelector('.mouth'),
     bridge: document.querySelector('.bridge'),
+    trackPattern: document.querySelector('.track-pattern'),
     frame: document.querySelector('.frame'),
     lightning: document.querySelector('.lightning')
   };
@@ -286,8 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
       position = Math.min(Math.max(position, ANIMATION.TRAIN.START_POSITION), 15);
       elements.train.style.left = `${position}rem`;
 
-      // Calculate animation speeds based on progress
-      const speedFactor = Math.min(1, gameState.currentQuestionIndex / (totalQuestions * 0.6));
+      // Calculate animation speeds based on progress - more dramatic acceleration curve
+      // Use exponential curve to create a sharper speed increase as progress increases
+      const speedFactor = Math.min(1, Math.pow(gameState.currentQuestionIndex / (totalQuestions * 0.4), 2.5));
 
       const speeds = {
         track: ANIMATION.SPEED.TRACK.START - (speedFactor * (ANIMATION.SPEED.TRACK.START - ANIMATION.SPEED.TRACK.END)),
@@ -298,8 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
         wheel: Math.max(ANIMATION.SPEED.WHEEL.MAX - (progress * 1.8), ANIMATION.SPEED.WHEEL.MIN)
       };
 
-      // Apply animation speeds
-      elements.bridge.style.animationDuration = `${speeds.track}s`;
+      // Apply animation speeds with smooth transition
+      if (elements.trackPattern) {
+        elements.trackPattern.style.transition = 'animation-duration 0.8s ease-in-out';
+        elements.trackPattern.style.animationDuration = `${speeds.track}s`;
+      }
+      elements.frame.style.transition = 'animation-duration 0.8s ease-in-out';
       elements.frame.style.animationDuration = `${speeds.background}s`;
 
       this.updateMountainSpeed(speeds.mountain);
@@ -357,8 +363,15 @@ document.addEventListener('DOMContentLoaded', () => {
       elements.train.style.transition = 'none';
       elements.train.style.left = `${ANIMATION.TRAIN.START_POSITION}rem`;
 
-      // Set initial animation speeds
-      if (elements.bridge) elements.bridge.style.animationDuration = `${ANIMATION.SPEED.TRACK.START}s`;
+      // Reset and restart animations
+      if (elements.trackPattern) {
+        // Force a reset of track pattern animation
+        elements.trackPattern.style.animationPlayState = 'paused';
+        void elements.trackPattern.offsetWidth;
+        elements.trackPattern.style.animationDuration = `${ANIMATION.SPEED.TRACK.START}s`;
+        elements.trackPattern.style.animationPlayState = 'running';
+      }
+      
       if (elements.frame) elements.frame.style.animationDuration = `${ANIMATION.SPEED.BACKGROUND.START}s`;
 
       this.updateMountainSpeed(ANIMATION.SPEED.MOUNTAIN.START);
@@ -372,7 +385,13 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     initialize() {
-      if (elements.bridge) elements.bridge.style.animationDuration = `${ANIMATION.SPEED.TRACK.START}s`;
+      if (elements.trackPattern) {
+        // Force an initial reflow to ensure animation starts smoothly
+        elements.trackPattern.style.animationPlayState = 'paused';
+        void elements.trackPattern.offsetWidth;
+        elements.trackPattern.style.animationDuration = `${ANIMATION.SPEED.TRACK.START}s`;
+        elements.trackPattern.style.animationPlayState = 'running';
+      }
       if (elements.frame) elements.frame.style.animationDuration = `${ANIMATION.SPEED.BACKGROUND.START}s`;
       this.updateMountainSpeed(ANIMATION.SPEED.MOUNTAIN.START);
     }
@@ -532,6 +551,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gameState.onDoomTrack = false;
         trainFace.setHappy();
         environment.setDaytime();
+        
+        // Immediately stop the bridge animation when choosing the safe path
+        if (elements.trackPattern) {
+          elements.trackPattern.style.animationPlayState = 'paused';
+        }
       }
 
       // Update scenario text
@@ -604,8 +628,24 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reset scenario text
       elements.scenarioText.textContent = initialScenarioText;
 
-      // Re-enable animations if they were paused
-      if (elements.bridge) elements.bridge.style.animationPlayState = 'running';
+      // Completely reset the track pattern animation by removing and reapplying it
+      if (elements.trackPattern) {
+        // Store the original animation
+        const originalAnimation = 'moveTrackPattern 12s linear infinite';
+        // Clear animation
+        elements.trackPattern.style.animation = 'none';
+        // Force reflow
+        void elements.trackPattern.offsetWidth;
+        // Restore animation
+        elements.trackPattern.style.animation = originalAnimation;
+        elements.trackPattern.style.animationPlayState = 'running';
+      }
+      
+      // Make sure bridge and its elements are visible
+      if (elements.bridge) {
+        elements.bridge.style.opacity = '1';
+      }
+      
       if (elements.frame) elements.frame.style.animationPlayState = 'running';
 
       // Reset animations
