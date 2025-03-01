@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
       TRANSITION_TIME: 1300
     },
     SPEED: {
-      TRACK: { START: 12, END: 0.8 },  // Start very slow, end very fast
+      TRACK: { START: 20, END: 0.8 },  // Start much slower, end very fast
+      MOUNTAINS: { START: 80, END: 5 }, // Background mountains move slower than tracks
       BACKGROUND: { START: 30, END: 1.5 },
       MOUNTAIN: { START: 40, END: 4 },
       LIGHTNING: { START: 7, END: 0.3 },
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mouth: document.querySelector('.mouth'),
     bridge: document.querySelector('.bridge'),
     trackPattern: document.querySelector('.track-pattern'),
+    mountainRange: document.querySelector('.mountain-range'),
     frame: document.querySelector('.frame'),
     lightning: document.querySelector('.lightning')
   };
@@ -293,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const speeds = {
         track: ANIMATION.SPEED.TRACK.START - (speedFactor * (ANIMATION.SPEED.TRACK.START - ANIMATION.SPEED.TRACK.END)),
+        mountains: ANIMATION.SPEED.MOUNTAINS.START - (speedFactor * (ANIMATION.SPEED.MOUNTAINS.START - ANIMATION.SPEED.MOUNTAINS.END)),
         background: ANIMATION.SPEED.BACKGROUND.START - (speedFactor * (ANIMATION.SPEED.BACKGROUND.START - ANIMATION.SPEED.BACKGROUND.END)),
         mountain: ANIMATION.SPEED.MOUNTAIN.START - (speedFactor * (ANIMATION.SPEED.MOUNTAIN.START - ANIMATION.SPEED.MOUNTAIN.END)),
         lightning: ANIMATION.SPEED.LIGHTNING.START - (speedFactor * (ANIMATION.SPEED.LIGHTNING.START - ANIMATION.SPEED.LIGHTNING.END)),
@@ -304,6 +307,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (elements.trackPattern) {
         elements.trackPattern.style.transition = 'animation-duration 0.8s ease-in-out';
         elements.trackPattern.style.animationDuration = `${speeds.track}s`;
+      }
+      
+      // Update mountain range speed
+      if (elements.mountainRange) {
+        elements.mountainRange.style.transition = 'animation-duration 0.8s ease-in-out';
+        elements.mountainRange.style.animationDuration = `${speeds.mountains}s`;
       }
       elements.frame.style.transition = 'animation-duration 0.8s ease-in-out';
       elements.frame.style.animationDuration = `${speeds.background}s`;
@@ -392,6 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.trackPattern.style.animationDuration = `${ANIMATION.SPEED.TRACK.START}s`;
         elements.trackPattern.style.animationPlayState = 'running';
       }
+      
+      if (elements.mountainRange) {
+        // Initialize mountain range animation
+        elements.mountainRange.style.animationPlayState = 'paused';
+        void elements.mountainRange.offsetWidth;
+        elements.mountainRange.style.animationDuration = `${ANIMATION.SPEED.MOUNTAINS.START}s`;
+        elements.mountainRange.style.animationPlayState = 'running';
+      }
+      
       if (elements.frame) elements.frame.style.animationDuration = `${ANIMATION.SPEED.BACKGROUND.START}s`;
       this.updateMountainSpeed(ANIMATION.SPEED.MOUNTAIN.START);
     }
@@ -556,6 +574,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (elements.trackPattern) {
           elements.trackPattern.style.animationPlayState = 'paused';
         }
+        
+        // Also stop the mountain range
+        if (elements.mountainRange) {
+          elements.mountainRange.style.animationPlayState = 'paused';
+        }
       }
 
       // Update scenario text
@@ -631,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Completely reset the track pattern animation by removing and reapplying it
       if (elements.trackPattern) {
         // Store the original animation
-        const originalAnimation = 'moveTrackPattern 12s linear infinite';
+        const originalAnimation = 'moveTrackPattern 20s linear infinite';
         // Clear animation
         elements.trackPattern.style.animation = 'none';
         // Force reflow
@@ -639,6 +662,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Restore animation
         elements.trackPattern.style.animation = originalAnimation;
         elements.trackPattern.style.animationPlayState = 'running';
+      }
+      
+      // Reset mountain range animation
+      if (elements.mountainRange) {
+        const mountainAnimation = 'moveBackgroundMountains 80s linear infinite';
+        elements.mountainRange.style.animation = 'none';
+        void elements.mountainRange.offsetWidth;
+        elements.mountainRange.style.animation = mountainAnimation;
+        elements.mountainRange.style.animationPlayState = 'running';
       }
       
       // Make sure bridge and its elements are visible
