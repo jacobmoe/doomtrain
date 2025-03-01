@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     onDoomTrack: true
   };
 
-  const initialScenarioText = "You're on a train and the last stop is AI doom. The object of the game is to find your stop before we reach doom. Or will you ride all the way to the end? All aboard!"
+  const initialScenarioText = "You're on a train and the last stop is AI doom. Find your stop before we reach doom. Or will you ride all the way to the end? All aboard!"
 
   // DOM elements
   const elements = {
