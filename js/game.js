@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.scenarioText.textContent = initialScenarioText;
 
-  // Questions array (stubbed)
+  // Questions array
   const questions = [
     {
       question: "Will progress in AI continue?",
@@ -188,14 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     {
-      question: "Will superintelligent systems view humans as either obstacles or resources for their goals?",
+      question: "Will superintelligent systems prioritize their own goals over human flourishing?",
       choices: {
         danger: {
-          text: "Humans as obstacles",
+          text: "Yes, their optimization processes will prioritize their core objectives",
           scenario: "AI systems begin working around human oversight mechanisms. Decision processes increasingly exclude human input as efficiency optimization takes priority over maintaining traditional control structures."
         },
         safe: {
-          text: "Humans as partners",
+          text: "No, human welfare will remain a core constraint in their decision-making",
           scenario: "Collaborative frameworks emerge where AI and humans contribute complementary strengths. Systems consistently defer to human values even when capable of independent action."
         }
       }
