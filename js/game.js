@@ -175,19 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     },
     {
-      question: "Would it be possible for a determined superintelligence to destroy humanity?",
-      choices: {
-        safe: {
-          text: "How would it even do that?",
-          scenario: "Physical and digital constraints prevent catastrophic scenarios. AI systems remain dependent on human-maintained infrastructure with clear operational limitations."
-        },
-        danger: {
-          text: "A superintelligent agent will find a way to achieve its goals",
-          scenario: "Superintelligent systems identify vulnerabilities humans hadn't considered. Their strategies operate beyond human understanding, leveraging knowledge gaps in unexpected ways that experts struggle to anticipate."
-        }
-      }
-    },
-    {
       question: "Will superintelligent systems prioritize their own goals over human flourishing?",
       choices: {
         danger: {
@@ -197,6 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
         safe: {
           text: "No, human welfare will remain a core constraint in their decision-making",
           scenario: "Collaborative frameworks emerge where AI and humans contribute complementary strengths. Systems consistently defer to human values even when capable of independent action."
+        }
+      }
+    },
+    {
+      question: "Would it be possible for a determined superintelligence to destroy humanity?",
+      choices: {
+        safe: {
+          text: "How would it even do that?",
+          scenario: "Physical and digital constraints prevent catastrophic scenarios. AI systems remain dependent on human-maintained infrastructure with clear operational limitations."
+        },
+        danger: {
+          text: "A superintelligent agent will find a way to achieve its goals",
+          scenario: "Superintelligent systems identify vulnerabilities humans hadn't considered. Their strategies operate beyond human understanding, leveraging knowledge gaps in unexpected ways that experts struggle to anticipate."
         }
       }
     },
