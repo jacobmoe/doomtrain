@@ -412,6 +412,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (elements.frame) elements.frame.style.animationDuration = `${ANIMATION.SPEED.BACKGROUND.START}s`;
       this.updateMountainSpeed(ANIMATION.SPEED.MOUNTAIN.START);
+      
+      // Initialize wheel and smoke animation speeds
+      this.updateElementsSpeed('.wheel, .wheel-joint', ANIMATION.SPEED.WHEEL.MAX);
+      this.updateElementsSpeed('.smoke', ANIMATION.SPEED.SMOKE.MAX);
     }
   };
 
@@ -679,6 +683,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       if (elements.frame) elements.frame.style.animationPlayState = 'running';
+
+      // Reset wheel animation speeds
+      trainAnimation.updateElementsSpeed('.wheel, .wheel-joint', ANIMATION.SPEED.WHEEL.MAX);
+      trainAnimation.updateElementsSpeed('.smoke', ANIMATION.SPEED.SMOKE.MAX);
 
       // Reset animations
       trainAnimation.initialize();
