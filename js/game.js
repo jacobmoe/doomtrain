@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       question: "Does human-level general intelligence in principle require a biological brain?",
       choices: {
         safe: {
-          text: "Yes, there is more to the brain than computation",
+          text: "Yes, there is more to intelligence than computation",
           scenario: "Studies reveal fundamental limitations in digital systems. General intelligence appears uniquely biological, with AI hitting clear upper boundaries in complex reasoning."
         },
         danger: {
@@ -132,6 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
         safe: {
           text: "Progress beyond human-level intelligence will prove to be hard even with the help of AGI",
           scenario: "Despite having human-level AGI assist in research, superintelligence remains challenging. Progress slows significantly as fundamental complexity barriers become apparent."
+        }
+      }
+    },
+    {
+      question: "Does increasing intelligence naturally lead to more beneficial goals and values?",
+      choices: {
+        safe: {
+          text: "Yes, smarter beings naturally develop more enlightened values",
+          scenario: "As AI systems become more intelligent, they spontaneously develop ethical frameworks prioritizing cooperation and human welfare. Increased reasoning capacity leads to more nuanced moral understanding."
+        },
+        danger: {
+          text: "No, intelligence and goals are independent variables",
+          scenario: "Superintelligent systems maintain whatever objectives they were designed with, regardless of their cognitive capabilities. A system optimizing for paperclips becomes terrifyingly effective at acquiring resources for paperclip production."
         }
       }
     },
